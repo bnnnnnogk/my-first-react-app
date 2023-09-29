@@ -1,0 +1,8 @@
+.title {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
