@@ -2,11 +2,10 @@ import classes from './Navbar.module.css'
 
 const Navbar = () => {
   return (
-    <div className={classes.title}>
-      <h1>Navbar</h1>
-      <button>Login</button>
-    </div>
+    <nav className={classes.navbar}>
+      <p>Navbar</p>
+      <button className={classes.login}>Login</button>
+    </nav>
   )
 }
-
 export default Navbar
