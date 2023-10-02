@@ -1,8 +1,7 @@
 .navbar {
   height: auto;
   width: 100%;
-  background-color: white;
-  box-shadow: 0 0 10px 5px rgb(0 0 0 / 0.1);
+  background-color: #ffc8c8;
   padding: 20px 16px;
   box-sizing: border-box;
 
@@ -12,7 +11,7 @@
 }
 
 .login {
-  background-color: #eee;
+  background-color: #dbc4f0;
   padding: 8px 10px;
   box-sizing: border-box;
   border: none;
