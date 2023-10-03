@@ -57,6 +57,8 @@ function App() {
         <input type="text" onChange={(e) => setNewTitle(e.target.value)} required />
         <label>Body</label>
         <input type="text" onChange={(e) => setNewBody(e.target.value)} required />
+
+        <button type="submit">Submit</button>
       </form>
 
       <div className="feed-container">
