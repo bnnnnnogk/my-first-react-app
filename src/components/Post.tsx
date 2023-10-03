@@ -7,7 +7,11 @@ interface IPostProps {
 }
 
 const Post = ({ post }: IPostProps) => {
-  const [showMore, setShowMore] = useState<boolean>(false)
+  const [isShow, setisShow] = useState<boolean>(false)
+
+  // const toggleShow = () => {
+  //   setisShow(!isShow)
+  // }
 
   return (
     <>
@@ -16,8 +20,8 @@ const Post = ({ post }: IPostProps) => {
         <p>postedBy: {post.userId}</p>
         <p>title: {post.title}</p>
         <p>body: {post.body}</p>
-        {showMore && <p>more infomation...</p>}
-        <button onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show More'}</button>
+        {isShow && <p>more infomation...</p>}
+        <button onClick={() => setisShow(!isShow)}>{isShow ? 'Show less' : 'Show More'}</button>
       </div>
     </>
   )
