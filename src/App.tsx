@@ -11,6 +11,7 @@ function App() {
   const [newTitle, setNewTitle] = useState<string>('')
   const [newBody, setNewBody] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isPosting, setIsPosting] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,10 +37,23 @@ function App() {
     fetchData()
   }, [])
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     if (!posts) return
+
+    setIsPosting(true)
+    try {
+      const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+        firstName: `${newTitle}`,
+        lastName: `${newBody}`,
+      })
+      console.log(res.data)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setIsPosting(false)
+    }
 
     const currentPosts = [...posts]
 
@@ -70,7 +84,9 @@ function App() {
         <label>Body</label>
         <input type="text" value={newBody} onChange={(e) => setNewBody(e.target.value)} required />
 
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={isPosting}>
+          {isPosting ? 'submitting...' : 'submit'}
+        </button>
       </form>
 
       <div className="feed-container">
