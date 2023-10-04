@@ -5,7 +5,7 @@ export interface PostDTO {
   body: string
 }
 
-export interface createdPostDTO {
+export interface CreatePostDTO {
   userId: number
   title: string
   body: string
