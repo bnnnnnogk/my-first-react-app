@@ -3,7 +3,7 @@ import './App.css'
 import Greeting from './components/Greeting'
 import Navbar from './components/Navbar'
 import Post from './components/Post'
-import { PostDTO } from './types/dto'
+import { PostDTO, createdPostDTO } from './types/dto'
 import axios from 'axios'
 
 function App() {
@@ -40,13 +40,16 @@ function App() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (!posts) return
+    const createdPost: createdPostDTO = {
+      userId: Math.floor(Math.random() * 1000),
+      title: newTitle,
+      body: newBody,
+    }
 
     setIsPosting(true)
     try {
-      const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
-        firstName: `${newTitle}`,
-        lastName: `${newBody}`,
+      const res = await axios.post('https://jsonplaceholder.typicode.com/posts', createdPost, {
+        headers: { 'Content-Type': 'application/json' },
       })
       console.log(res.data)
     } catch (err) {
@@ -54,17 +57,6 @@ function App() {
     } finally {
       setIsPosting(false)
     }
-
-    const currentPosts = [...posts]
-
-    currentPosts.push({
-      id: Math.floor(Math.random() * 1000), // * database should generate id for us
-      userId: Math.floor(Math.random() * 1000),
-      title: newTitle,
-      body: newBody,
-    })
-
-    setPosts(currentPosts)
 
     // * Clear form after set posts
     setNewTitle('')
