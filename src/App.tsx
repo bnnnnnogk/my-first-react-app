@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import './App.css'
 import Greeting from './components/Greeting'
 import Navbar from './components/Navbar'
@@ -30,6 +30,14 @@ function App() {
   const [posts, setPosts] = useState<PostDTO[]>(initialPosts)
   const [newTitle, setNewTitle] = useState<string>('')
   const [newBody, setNewBody] = useState<string>('')
+
+  useEffect(() => {
+    const fetchData = () => {
+      console.log('data fetcched')
+    }
+
+    fetchData()
+  }, [])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
