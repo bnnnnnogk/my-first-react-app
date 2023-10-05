@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import usePosts from '../hooks/usePosts'
+import classes from './Home.module.css'
 import Post from '../components/Post'
 
 const Home = () => {
@@ -23,8 +24,8 @@ const Home = () => {
   if (isLoading) return <h1>Loading...</h1>
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={classes.container}>
+      <form className={classes.postForm} onSubmit={handleSubmit}>
         <label>Title</label>
         <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} required />
         <label>Body</label>
@@ -35,7 +36,8 @@ const Home = () => {
         </button>
       </form>
 
-      <div className="feed-container">
+      <div className={classes.feedContainer}>
+        <h2>Feed</h2>
         {posts &&
           posts.map((post) => {
             return <Post key={post.id} post={post} />
