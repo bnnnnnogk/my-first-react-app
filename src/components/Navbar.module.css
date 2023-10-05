@@ -1,7 +1,8 @@
 .navbar {
   height: auto;
   width: 100%;
-  background-color: #ffc8c8;
+  background-color: #64ccc5;
+  box-shadow: 0 0 10px 5px rgb(0 0 0 / 0.1);
   padding: 20px 16px;
   box-sizing: border-box;
 
@@ -10,8 +11,24 @@
   align-items: center;
 }
 
+.menu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.inactive {
+  text-decoration: none;
+}
+
+.active {
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .login {
-  background-color: #dbc4f0;
+  background-color: #eee;
   padding: 8px 10px;
   box-sizing: border-box;
   border: none;

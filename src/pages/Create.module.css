@@ -1,0 +1,12 @@
+.postForm {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: auto;
+  background-color: #219c90;
+
+  padding: 20px 20px;
+  border-radius: 100%;
+  gap: 10px;
+  align-items: center;
+}

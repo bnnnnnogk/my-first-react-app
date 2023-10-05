@@ -45,6 +45,8 @@ const usePosts = () => {
     }
   }
 
+  if (isLoading) return <h1>Loading...</h1>
+
   return { posts, isLoading, isSubmitting, createPost }
 }
 
