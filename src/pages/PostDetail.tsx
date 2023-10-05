@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import usePost from '../hooks/usePost'
+import classes from './PostDetail.module.css'
 
 const PostDetail = () => {
   const { id } = useParams()
@@ -10,9 +11,9 @@ const PostDetail = () => {
   if (isLoading) return <h1>Loading...</h1>
 
   return (
-    <div>
-      <h1>{posts?.id}</h1>
-      <h1>{posts?.title}</h1>
+    <div className={classes.feed}>
+      <h1>Title : {posts?.title}</h1>
+      <h1>Post ID: {posts?.id}</h1>
       <p>{posts?.body}</p>
     </div>
   )

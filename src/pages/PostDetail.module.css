@@ -1,0 +1,15 @@
+.feed {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 10px 14px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 5px rgb(0 0 0 / 0.1);
+  background-color: #bc7af9;
+  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

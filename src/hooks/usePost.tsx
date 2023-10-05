@@ -5,16 +5,17 @@ import { PostDTO } from '../types/dto'
 const usePost = (id: string) => {
   const [posts, setPosts] = useState<PostDTO | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
       try {
-        const res = await axios.get<PostDTO>('https://jsonplaceholder.typicode.com/posts/' + id || '1')
+        const res = await axios.get<PostDTO>(`https://jsonplaceholder.typicode.com/posts/${id}`)
 
         setPosts(res.data)
-      } catch (err) {
-        console.error(err)
+      } catch (error) {
+        setError('Data Not Found')
       } finally {
         setIsLoading(false)
       }
@@ -23,7 +24,7 @@ const usePost = (id: string) => {
     fetchData()
   }, [id])
 
-  return { posts, isLoading }
+  return { posts, isLoading, error }
 }
 
 export default usePost
