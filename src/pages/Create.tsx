@@ -1,10 +1,12 @@
 import { FormEvent, useState } from 'react'
 import classes from './Create.module.css'
 import usePosts from '../hooks/usePosts'
+import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
   const { isSubmitting, createPost } = usePosts()
   const [newTitle, setNewTitle] = useState<string>('')
+  const navigate = useNavigate()
   const [newBody, setNewBody] = useState<string>('')
 
   const handleSubmit = async (e: FormEvent) => {
@@ -15,6 +17,8 @@ const Create = () => {
 
       setNewTitle('')
       setNewBody('')
+
+      navigate('/')
     } catch (err) {
       console.error(err)
     }
