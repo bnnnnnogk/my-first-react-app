@@ -3,7 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
-import Create from './pages/create'
+import Create from './pages/Create'
 
 function App() {
   return (

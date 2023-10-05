@@ -1,10 +1,9 @@
 import { FormEvent, useState } from 'react'
-import usePosts from '../hooks/usePosts'
-// import classes from './Navbar.module.css'
 import classes from './Create.module.css'
+import usePosts from '../hooks/usePosts'
 
 const Create = () => {
-  const { isLoading, isSubmitting, createPost } = usePosts()
+  const { isSubmitting, createPost } = usePosts()
   const [newTitle, setNewTitle] = useState<string>('')
   const [newBody, setNewBody] = useState<string>('')
 
@@ -21,21 +20,17 @@ const Create = () => {
     }
   }
 
-  if (isLoading) return <h1>Loading...</h1>
-
   return (
-    <div className={classes.feedContainer}>
-      <form className={classes.postForm} onSubmit={handleSubmit}>
-        <label>Title</label>
-        <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} required />
-        <label>Body</label>
-        <input type="text" value={newBody} onChange={(e) => setNewBody(e.target.value)} required />
+    <form className={classes.postForm} onSubmit={handleSubmit}>
+      <label>Title</label>
+      <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} required />
+      <label>Body</label>
+      <input type="text" value={newBody} onChange={(e) => setNewBody(e.target.value)} required />
 
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Submit'}
-        </button>
-      </form>
-    </div>
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Submitting...' : 'Submit'}
+      </button>
+    </form>
   )
 }
 

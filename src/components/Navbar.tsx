@@ -11,16 +11,15 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className={classes.menu}>
-        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
-          Create
-        </NavLink>
         <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/profile">
           Profile
+        </NavLink>
+        <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
+          Create
         </NavLink>
         <button className={classes.login}>Login</button>
       </div>
     </nav>
   )
 }
-
 export default Navbar

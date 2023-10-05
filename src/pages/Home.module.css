@@ -11,15 +11,3 @@
   max-width: 800px;
   width: 100%;
 }
-
-.postForm {
-  display: flex;
-  flex-direction: column;
-  width: max-content;
-  height: auto;
-  background-color: #219c90;
-
-  padding: 10px 8px;
-  border-radius: 6px;
-  gap: 5px;
-}
