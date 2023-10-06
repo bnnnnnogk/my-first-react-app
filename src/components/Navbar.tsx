@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useAuth } from '../providers/AuthProvider'
 import classes from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
@@ -22,7 +23,9 @@ const Navbar = () => {
         <NavLink className={({ isActive }) => (isActive ? classes.active : classes.inactive)} to="/create">
           Create
         </NavLink>
-        <button className={classes.login}>Login</button>
+        <Link to="/login" className={classes.login}>
+          Login
+        </Link>
       </div>
     </nav>
   )
