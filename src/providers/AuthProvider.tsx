@@ -21,8 +21,10 @@ export const useAuth = () => {
   return context
 }
 
+const token = localStorage.getItem('token')
+
 const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [isLoggedIn, setIsLoggedin] = useState<boolean>(false)
+  const [isLoggedIn, setIsLoggedin] = useState<boolean>(!!token)
 
   const login = async (username: string, password: string) => {
     const loginBody: LoginDTO = { username, password }
@@ -32,7 +34,8 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
         headers: { 'Content-Type': 'application/json' },
       })
 
-      console.log(res.data)
+      localStorage.setItem('token', res.data.accessToken)
+      setIsLoggedin(true)
     } catch (err) {
       throw new Error('Invalid username or password')
     }
