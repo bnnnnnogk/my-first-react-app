@@ -10,6 +10,7 @@ interface IAuthContextType {
   isLoggedIn: boolean
   username: string | null
   login: (username: string, password: string) => Promise<void>
+  logout: () => void
 }
 
 const AuthContext = createContext<IAuthContextType | null>(null)
@@ -46,7 +47,12 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   }
 
-  return <AuthContext.Provider value={{ isLoggedIn, username, login }}>{children}</AuthContext.Provider>
+  const logout = () => {
+    localStorage.clear()
+    setIsLoggedin(false)
+  }
+
+  return <AuthContext.Provider value={{ isLoggedIn, username, login, logout }}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider
