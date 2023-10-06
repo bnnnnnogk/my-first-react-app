@@ -7,6 +7,7 @@ import Create from './pages/Create'
 import PostDetail from './pages/PostDetail'
 import Login from './pages/Login'
 import { useAuth } from './providers/AuthProvider'
+import GuardedRoute from './guard/GuardedRoute'
 
 function App() {
   const { isLoggedIn } = useAuth()
@@ -15,18 +16,17 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        {isLoggedIn ? (
-          <>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/post/:id" element={<PostDetail />} />
-          </>
-        ) : (
-          <>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-          </>
-        )}
+        <Route path="/" element={<Home />} />
+        <Route path="/post/:id" element={<PostDetail />} />
+
+        <Route element={<GuardedRoute isRouteAccessible={isLoggedIn} redirectRoute="/login" />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create" element={<Create />} />
+        </Route>
+
+        <Route element={<GuardedRoute isRouteAccessible={!isLoggedIn} redirectRoute="/" />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Routes>
     </div>
   )
